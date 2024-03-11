@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --ignore-path .gitignore .",
+    "format": "npm run prettier -- --write",
+    "format:check": "npm run prettier -- --check"
   },
   "dependencies": {
     "react": "^18",
@@ -20,6 +23,8 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "postcss": "^8",
+    "prettier": "^3",
+    "prettier-plugin-tailwindcss": "^0.5",
     "tailwindcss": "^3.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.3"
