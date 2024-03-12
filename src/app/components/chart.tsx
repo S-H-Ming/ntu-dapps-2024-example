@@ -5,18 +5,19 @@ import { Bar } from 'react-chartjs-2'
 
 
 export default function Chart({ data }:
-    { data: { address: string, amount: number }[] }) {
+    { data: Array<{ sender: string; amount: number }> }) {
 
     const options = {
         responsive: true
     };
 
-    const labels = data.map(d => d.address)
+    const labels = data.map(d => d.sender)
 
     const _data = {
         labels,
         datasets: [{
-            data: data.map(d => d.amount),
+            label: '',
+            data: data.map(d => (d.amount / 100000).toFixed(6)),
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
         }],
     };

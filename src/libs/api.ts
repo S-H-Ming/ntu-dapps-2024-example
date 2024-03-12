@@ -1,26 +1,5 @@
-const TZKT_SERVER = "https://api.ghostnet.tzkt.io"
-const CONTRACT = "KT19rRrc8dsggDWCvU5piBpsPeeo9TZ4uNbK"
-const FUNDINGS_BIGMAP = 408145
-
-export interface IncomeRecord {
-  sender: string
-  amount: number
-  timestamp: Date
-}
-
-export interface ExpenditureRecord {
-  target: string
-  amount: number
-  usage: string
-  timestamp: Date
-}
-
-export interface Statistics {
-  current: number
-  in: number
-  out: number
-  funding: Array<{ sender: string; amount: number }>
-}
+import { CONTRACT_ADDRESS, FUNDINGS_BIGMAP, TZKT_SERVER } from "@/app/constants"
+import { ExpenditureRecord, IncomeRecord, Statistics } from "@/app/interfaces/data.interface"
 
 export async function getStatistics(): Promise<Statistics> {
   type TxType = { key: string; value: string }
@@ -36,7 +15,9 @@ export async function getStatistics(): Promise<Statistics> {
     .then((res) => res.json() satisfies Promise<Array<TxType>>)
     .catch((e) => [])
 
-  const getBalanceTask: Promise<number> = fetch(`${TZKT_SERVER}/v1/accounts/${CONTRACT}/balance?`)
+  const getBalanceTask: Promise<number> = fetch(
+    `${TZKT_SERVER}/v1/accounts/${CONTRACT_ADDRESS}/balance?`
+  )
     .then((res) => res.json() satisfies Promise<number>)
     .catch((e) => 0)
 
@@ -70,7 +51,7 @@ export async function getIncomeRecords(): Promise<Array<IncomeRecord>> {
   const transactions: Array<TxType> = await fetch(
     `${TZKT_SERVER}/v1/operations/transactions?` +
       new URLSearchParams({
-        target: CONTRACT,
+        target: CONTRACT_ADDRESS,
         entrypoint: "fund",
         select: "timestamp,sender,amount",
         status: "applied",
@@ -94,7 +75,7 @@ export async function getExpenditureRecords(): Promise<Array<ExpenditureRecord>>
   const transactions: Array<TxType> = await fetch(
     `${TZKT_SERVER}/v1/operations/transactions?` +
       new URLSearchParams({
-        target: CONTRACT,
+        target: CONTRACT_ADDRESS,
         entrypoint: "withdraw",
         select: "timestamp,parameter",
         status: "applied",
