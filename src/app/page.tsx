@@ -1,33 +1,27 @@
 import Image from "next/image";
-import PieChart from "./components/pie-chart";
+import Chart from "./components/chart";
 import InputList from "./components/input-list";
 import OutputList from "./components/output-list";
+import { CONTRACT_ADDRESS } from "./constants";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex min-h-screen flex-col items-center p-12">
+      <div className="text-2xl mb-8 border py-4 px-8">An Example of Fundraising</div>
+      <div className="w-full text-center">
+        <div className="">
+          <div>Contract address: {CONTRACT_ADDRESS}</div>
+          <div>Total wallets: { }</div>
+          <div>Total volume: { } xtz</div>
+        </div>
+        <Chart />
+      </div>
+      <div className="flex flex-row w-full justify-between">
+        <div className="w-1/2 border-r p-4">
+          <InputList />
+        </div>
+        <div className="w-1/2 p-4">
+          <OutputList />
         </div>
       </div>
 
