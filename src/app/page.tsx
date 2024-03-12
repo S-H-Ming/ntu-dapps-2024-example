@@ -1,27 +1,56 @@
-import Image from "next/image";
 import Chart from "./components/chart";
-import InputList from "./components/input-list";
-import OutputList from "./components/output-list";
+import List from "./components/list";
 import { CONTRACT_ADDRESS } from "./constants";
+import { Expense, Record } from "./interfaces/data.interface";
 
 export default function Home() {
+
+
+  const adminAddress = "tz123123"
+  const totalWallets = 10
+  const totalAmount = 100
+
+  const record: Record = {
+    address: "tz",
+    volume: 100,
+    timestamp: "2024/3/9 15:00:00"
+  }
+
+  const expense: Expense = {
+    purpose: "就想花錢",
+    volume: 100,
+    timestamp: "2024/3/9 15:00:00"
+  }
+
+  const transferFrom = Array.from(Array(20).keys()).map(() => record)
+  const transferTo = Array.from(Array(20).keys()).map(() => expense)
+
+  const investment = {
+    "address": "tz123",
+    "amount": 100
+  }
+
+  const investmentList = Array.from(Array(20).keys()).map(() => investment)
+
+
   return (
     <main className="flex min-h-screen flex-col items-center p-12">
       <div className="text-2xl mb-8 border py-4 px-8">An Example of Fundraising</div>
       <div className="w-full text-center">
         <div className="">
           <div>Contract address: {CONTRACT_ADDRESS}</div>
-          <div>Total wallets: { }</div>
-          <div>Total volume: { } xtz</div>
+          <div>Admin: {adminAddress}</div>
+          <div>Total wallets: {totalWallets}</div>
+          <div>Total amount: {totalAmount} xtz</div>
         </div>
-        <Chart />
+        <Chart data={investmentList} />
       </div>
       <div className="flex flex-row w-full justify-between">
-        <div className="w-1/2 border-r p-4">
-          <InputList />
+        <div className="w-1/2 border-r-2 p-6">
+          <List data={transferFrom} title="Investment List" />
         </div>
-        <div className="w-1/2 p-4">
-          <OutputList />
+        <div className="w-1/2 p-6">
+          <List data={transferTo} title="Expense by admin" />
         </div>
       </div>
 
