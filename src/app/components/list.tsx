@@ -7,7 +7,7 @@ export default function List({ data, title }: { data: IncomeRecord[] | Expenditu
         <div>
             <div className="text-center text-xl mb-8">{title}</div>
             {
-                data.map((d: IncomeRecord | ExpenditureRecord, i: number) => <RecordRow data={d} key={i} />)
+                data.map((d: IncomeRecord | ExpenditureRecord, i: number) => <RecordRow data={d} key={i} />).reverse()
             }
         </div>
     )
