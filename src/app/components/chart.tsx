@@ -16,8 +16,8 @@ export default function Chart({ data }:
     const _data = {
         labels,
         datasets: [{
-            label: '',
-            data: data.map(d => (d.amount / 100000).toFixed(6)),
+            label: 'Donor',
+            data: data.map(d => (d.amount / 1000000).toFixed(6)),
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
         }],
     };

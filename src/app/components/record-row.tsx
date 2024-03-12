@@ -31,7 +31,7 @@ export default function RecordRow({ data }: { data: IncomeRecord | ExpenditureRe
             }
             <div className="flex border-b py-2 px-4 w-full flex-row justify-between">
                 <div className="w-1/3 truncate">{isExpenditure(data) ? data.target : data.sender}</div>
-                <div>{(data.amount / 100000).toFixed(6)} xtz</div>
+                <div>{(data.amount / 1000000).toFixed(6)} xtz</div>
                 <div>{getTimeStr(data.timestamp)}</div>
             </div>
         </React.Fragment>

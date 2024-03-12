@@ -38,9 +38,9 @@ export default function Home() {
           {
             statistics &&
             <React.Fragment>
-              <div>Total income: {(statistics.in / 100000).toFixed(6)} xtz</div>
-              <div>Current amount: {(statistics.current / 100000).toFixed(6)} xtz</div>
-              <div>Total expenditure: {(statistics.out / 100000).toFixed(6)} xtz</div>
+              <div>Total income: {(statistics.in / 1000000).toFixed(6)} xtz</div>
+              <div>Current amount: {(statistics.current / 1000000).toFixed(6)} xtz</div>
+              <div>Total expenditure: {(statistics.out / 1000000).toFixed(6)} xtz</div>
             </React.Fragment>
           }
         </div>
