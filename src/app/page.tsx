@@ -51,7 +51,7 @@ export default function Home() {
       </div>
       <div className="flex flex-row w-full justify-between">
         <div className="w-1/2 border-r-2 p-6">
-          <List data={incomes} title="Imcome List" />
+          <List data={incomes} title="Income List" />
         </div>
         <div className="w-1/2 p-6">
           <List data={expenditures} title="Expenditure by admin" />
